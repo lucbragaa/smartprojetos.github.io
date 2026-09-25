@@ -1,5 +1,9 @@
 # Contexto do projeto para continuidade
 
+## Regras para futuras sessões
+
+1. **Não comitar nada.** Deixe as alterações para o usuário revisar e commitar pessoalmente. Você pode sugerir uma mensagem de commit, mas não execute o commit.
+
 Este arquivo registra o contexto técnico e editorial do repositório para a próxima sessão de trabalho ou outra IA. Ele é excluído do GitHub Pages por `exclude` em `_config.yml` e não deve aparecer no site publicado.
 
 ## Objetivo do repositório
@@ -92,3 +96,4 @@ O arquivo `000 - Infraestrutura.txt` foi usado como referência de endereços, c
 2. Conferir a publicação no GitHub Pages depois do push.
 3. Se for necessário manter versões internas e públicas, separar o conteúdo confidencial em um repositório privado ou em documentação interna.
 4. Atualizar este arquivo quando a arquitetura, a navegação ou a forma de publicação mudar.
+
