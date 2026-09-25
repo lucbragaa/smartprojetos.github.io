@@ -81,8 +81,10 @@ O arquivo `000 - Infraestrutura.txt` foi usado como referência de endereços, c
 
 - A estrutura Markdown e os links de navegação foram criados localmente.
 - Os endereços IP e as redes reais foram substituídos por marcadores entre colchetes em todo o repositório. As fontes originais em D:\projects\docs permanecem fora do site e não foram modificadas.
-- As alterações ainda precisam ser revisadas, commitadas e enviadas ao repositório remoto para que o GitHub Pages publique a versão atual.
-- Nenhum build local do Jekyll foi executado nesta sessão.
+- As alterações foram publicadas no branch `develop` no commit `052da9f` (`Organiza documentação e corrige links do Pages`).
+- A URL publicada confirmada é `https://lucbragaa.github.io/smartprojetos.github.io/`.
+- A página `/smartprojetos.github.io/docs/vpn/visao-geral.html` respondeu HTTP 200 após o envio.
+- Nenhum build local do Jekyll foi executado nesta sessão; o GitHub Pages executou a publicação.
 
 ## Próximas ações sugeridas
 
