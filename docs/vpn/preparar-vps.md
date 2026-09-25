@@ -3,7 +3,7 @@ title: Preparação e inicialização do VPS
 layout: default
 ---
 
-[← Início da documentação](/)
+[← Início da documentação]({{ site.baseurl }}/)
 
 # Preparação e inicialização do VPS
 
@@ -23,24 +23,24 @@ layout: default
 **+-------------+**
              |     VPS     |
              | Ubuntu      |
-             | 191.252.218.108
+             | [IP_PUBLICO_VPS]
 **+-------------+**
                     |
     OpenVPN Server
-**10.8.0.1**
+**[IP_VPN_VPS_FIXO]**
                     |
-**VPN 10.8.0.0/24**
+**VPN [REDE_VPN_FIXA]/24**
                     |
 **+---------+---------+**
           |                   |
 **G806S               Notebook**
-**10.8.0.2            10.8.0.3**
+**[IP_VPN_G806S_FIXO]            [IP_VPN_TECNICO_FIXO]**
           |
           |
 **LAN industrial**
-**192.168.1.0/24**
+**[REDE_LAN_INDUSTRIAL_FIXA]/24**
           |
-**+---- CLP 192.168.1.10**
+**+---- CLP [IP_EQUIPAMENTO_INDUSTRIAL_FIXO]**
 
 
 **IMPORTANTE:**
@@ -55,14 +55,13 @@ layout: default
 
 **SSH:**
 
-    ssh root@191.252.218.108
+    ssh root@[IP_PUBLICO_VPS]
 
 **IP público do VPS:**
-**191.252.218.108**
+**[IP_PUBLICO_VPS]**
 
 
 ## 2. ATUALIZAR UBUNTU
 
     apt update
     apt upgrade -y
-

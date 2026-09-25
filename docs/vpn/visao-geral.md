@@ -3,7 +3,7 @@ title: Visão geral da infraestrutura VPN
 layout: default
 ---
 
-[← Início da documentação](/)
+[← Início da documentação]({{ site.baseurl }}/)
 
 # Visão geral da infraestrutura VPN
 
@@ -12,19 +12,19 @@ layout: default
 **TOPOLOGIA**
 
 VPS
-**191.252.218.108**
+**[IP_PUBLICO_VPS]**
 
 VPN
-**10.8.0.0/24**
+**[REDE_VPN_FIXA]/24**
 
 VPS
-**10.8.0.1**
+**[IP_VPN_VPS_FIXO]**
 
 **G806S**
-**10.8.0.2**
+**[IP_VPN_G806S_FIXO]**
 
 **REDE INDUSTRIAL**
-**192.168.1.0/24**
+**[REDE_LAN_INDUSTRIAL_FIXA]/24**
 
 **OPENVPN**
 **UDP 1194**
@@ -41,4 +41,3 @@ VPS
 **02 - Instalação e Configuração do OpenVPN Server**
 **03 - Criação e Configuração de Clientes OpenVPN**
 04 - Operação, Testes e Manutenção da VPN
-

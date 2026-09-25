@@ -1,5 +1,9 @@
 # Contexto do projeto para continuidade
 
+## Regras para futuras sessões
+
+1. **Não comitar nada.** Deixe as alterações para o usuário revisar e commitar pessoalmente. Você pode sugerir uma mensagem de commit, mas não execute o commit.
+
 Este arquivo registra o contexto técnico e editorial do repositório para a próxima sessão de trabalho ou outra IA. Ele é excluído do GitHub Pages por `exclude` em `_config.yml` e não deve aparecer no site publicado.
 
 ## Objetivo do repositório
@@ -52,15 +56,15 @@ O arquivo `000 - Infraestrutura.txt` foi usado como referência de endereços, c
 
 ### VPN fixa
 
-- VPS documentado: `191.252.218.108`.
-- OpenVPN: UDP `1194`, rede `10.8.0.0/24` e VPS VPN `10.8.0.1`.
-- G806S: VPN `10.8.0.2`; LAN industrial de referência `192.168.1.0/24`.
-- Exemplo de CLP: `192.168.1.10`.
+- VPS documentado: `[IP_PUBLICO_VPS]`.
+- OpenVPN: UDP `1194`, rede `[REDE_VPN_FIXA]/24` e VPS VPN `[IP_VPN_VPS_FIXO]`.
+- G806S: VPN `[IP_VPN_G806S_FIXO]`; LAN industrial de referência `[REDE_LAN_INDUSTRIAL_FIXA]/24`.
+- Exemplo de CLP: `[IP_EQUIPAMENTO_INDUSTRIAL_FIXO]`.
 - Protocolos de teste: Siemens S7 TCP `102` e Modbus TCP `502`.
 
 ### Gateway portátil
 
-- OpenVPN separado: UDP `1195`, rede `10.9.0.0/24` e VPS VPN `10.9.0.1`.
+- OpenVPN separado: UDP `1195`, rede `[REDE_VPN_PORTATIL]/24` e VPS VPN `[IP_VPN_VPS_PORTATIL]`.
 - O cenário documenta DNAT/Port Forward e SNAT no G806S para permitir o retorno do tráfego quando o equipamento industrial não tem gateway.
 - O acesso validado é por IP e porta. A descoberta PROFINET/DCP não deve ser considerada suportada automaticamente.
 
@@ -80,8 +84,11 @@ O arquivo `000 - Infraestrutura.txt` foi usado como referência de endereços, c
 ## Estado de trabalho
 
 - A estrutura Markdown e os links de navegação foram criados localmente.
-- As alterações ainda precisam ser revisadas, commitadas e enviadas ao repositório remoto para que o GitHub Pages publique a versão atual.
-- Nenhum build local do Jekyll foi executado nesta sessão.
+- Os endereços IP e as redes reais foram substituídos por marcadores entre colchetes em todo o repositório. As fontes originais em D:\projects\docs permanecem fora do site e não foram modificadas.
+- As alterações foram publicadas no branch `develop` no commit `052da9f` (`Organiza documentação e corrige links do Pages`).
+- A URL publicada confirmada é `https://lucbragaa.github.io/smartprojetos.github.io/`.
+- A página `/smartprojetos.github.io/docs/vpn/visao-geral.html` respondeu HTTP 200 após o envio.
+- Nenhum build local do Jekyll foi executado nesta sessão; o GitHub Pages executou a publicação.
 
 ## Próximas ações sugeridas
 
@@ -89,3 +96,4 @@ O arquivo `000 - Infraestrutura.txt` foi usado como referência de endereços, c
 2. Conferir a publicação no GitHub Pages depois do push.
 3. Se for necessário manter versões internas e públicas, separar o conteúdo confidencial em um repositório privado ou em documentação interna.
 4. Atualizar este arquivo quando a arquitetura, a navegação ou a forma de publicação mudar.
+

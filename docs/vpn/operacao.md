@@ -3,7 +3,7 @@ title: Operação, testes e manutenção da VPN
 layout: default
 ---
 
-[← Início da documentação](/)
+[← Início da documentação]({{ site.baseurl }}/)
 
 # Operação, testes e manutenção da VPN
 
@@ -16,7 +16,7 @@ layout: default
 
 **No Windows:**
 
-    ping 10.8.0.1
+    ping [IP_VPN_VPS_FIXO]
 
 
 **Resultado esperado:**
@@ -26,7 +26,7 @@ layout: default
 
 **TESTE 2 - G806S**
 
-    ping 10.8.0.2
+    ping [IP_VPN_G806S_FIXO]
 
 
 **Resultado esperado:**
@@ -38,7 +38,7 @@ layout: default
 
 **Exemplo:**
 
-    ping 192.168.1.10
+    ping [IP_EQUIPAMENTO_INDUSTRIAL_FIXO]
 
 
 **Resultado esperado:**
@@ -73,7 +73,7 @@ ou
 
 **Comando:**
 
-    Test-NetConnection 192.168.1.10 -Port 102
+    Test-NetConnection [IP_EQUIPAMENTO_INDUSTRIAL_FIXO] -Port 102
 
 
 **Resultado esperado:**
@@ -84,13 +84,13 @@ ou
 **Exemplo validado:**
 
 **RemoteAddress:**
-**192.168.1.10**
+**[IP_EQUIPAMENTO_INDUSTRIAL_FIXO]**
 
 **RemotePort:**
 102
 
 **SourceAddress:**
-**10.8.0.3**
+**[IP_VPN_TECNICO_FIXO]**
 
 **TcpTestSucceeded:**
 **True**
@@ -109,7 +109,7 @@ ou
 
 **Comando:**
 
-    Test-NetConnection 192.168.1.10 -Port 502
+    Test-NetConnection [IP_EQUIPAMENTO_INDUSTRIAL_FIXO] -Port 502
 
 
 **Resultado esperado:**
@@ -142,7 +142,7 @@ O Accessible Devices utiliza mecanismos de descoberta PROFINET/DCP,
 **No nosso teste:**
 
 **PING:**
-**192.168.1.10       OK**
+**[IP_EQUIPAMENTO_INDUSTRIAL_FIXO]       OK**
 
 **TCP/102:**
 OK
@@ -158,7 +158,7 @@ Portanto, para operação pela VPN, o importante é conseguir
 **TESTE VALIDADO:**
 
 **TIA Portal conseguiu acessar ONLINE o CLP**
-**192.168.1.10 através da VPN.**
+**[IP_EQUIPAMENTO_INDUSTRIAL_FIXO] através da VPN.**
 
 
 ## 24. COMANDOS DE DIAGNÓSTICO
@@ -175,27 +175,27 @@ Portanto, para operação pela VPN, o importante é conseguir
 
 **TESTAR VPN SERVER:**
 
-    ping 10.8.0.1
+    ping [IP_VPN_VPS_FIXO]
 
 
 **TESTAR G806S:**
 
-    ping 10.8.0.2
+    ping [IP_VPN_G806S_FIXO]
 
 
 **TESTAR EQUIPAMENTO:**
 
-    ping 192.168.1.10
+    ping [IP_EQUIPAMENTO_INDUSTRIAL_FIXO]
 
 
 **TESTAR S7:**
 
-    Test-NetConnection 192.168.1.10 -Port 102
+    Test-NetConnection [IP_EQUIPAMENTO_INDUSTRIAL_FIXO] -Port 102
 
 
 **TESTAR MODBUS TCP:**
 
-    Test-NetConnection 192.168.1.10 -Port 502
+    Test-NetConnection [IP_EQUIPAMENTO_INDUSTRIAL_FIXO] -Port 502
 
 
 **VER STATUS OPENVPN:**
@@ -486,21 +486,21 @@ yes
 
 ## 10. Testar:
 
-    ping 10.8.0.1
+    ping [IP_VPN_VPS_FIXO]
 
 
 ## 11. Testar acesso ao equipamento:
 
-    ping 192.168.1.10
+    ping [IP_EQUIPAMENTO_INDUSTRIAL_FIXO]
 
 
 ## 12. Testar porta necessária:
 
 S7:
-    Test-NetConnection 192.168.1.10 -Port 102
+    Test-NetConnection [IP_EQUIPAMENTO_INDUSTRIAL_FIXO] -Port 102
 
 **Modbus TCP:**
-    Test-NetConnection 192.168.1.10 -Port 502
+    Test-NetConnection [IP_EQUIPAMENTO_INDUSTRIAL_FIXO] -Port 502
 
 
 ## 31. CHECKLIST PARA NOVO G806S
@@ -536,7 +536,7 @@ S7:
 
 **Exemplo:**
 
-**192.168.1.0/24**
+**[REDE_LAN_INDUSTRIAL_FIXA]/24**
 
 
 ## 8. Configurar rota correspondente no G806S.
@@ -551,7 +551,7 @@ S7:
 
 **Com:**
 
-**iroute 192.168.1.0 255.255.255.0**
+**iroute [REDE_LAN_INDUSTRIAL_FIXA] 255.255.255.0**
 
 
 ## 10. Reiniciar OpenVPN:
@@ -574,7 +574,7 @@ S7:
 
 **TÉCNICO:**
 
-**10.8.0.3**
+**[IP_VPN_TECNICO_FIXO]**
 
         |
         | OpenVPN
@@ -582,7 +582,7 @@ S7:
 
 **VPS:**
 
-**10.8.0.1**
+**[IP_VPN_VPS_FIXO]**
 
         |
         | VPN
@@ -590,7 +590,7 @@ S7:
 
 **G806S:**
 
-**10.8.0.2**
+**[IP_VPN_G806S_FIXO]**
 
         |
         | LAN
@@ -598,7 +598,7 @@ S7:
 
 **CLP:**
 
-**192.168.1.10**
+**[IP_EQUIPAMENTO_INDUSTRIAL_FIXO]**
 
 
 **Para Siemens:**
@@ -607,7 +607,7 @@ PC
   |
   | TCP 102
   v
-**192.168.1.10**
+**[IP_EQUIPAMENTO_INDUSTRIAL_FIXO]**
 
 
 **Para Modbus TCP:**
@@ -616,7 +616,7 @@ PC
   |
   | TCP 502
   v
-**192.168.1.10**
+**[IP_EQUIPAMENTO_INDUSTRIAL_FIXO]**
 
 
 ## 33. PORTAS IMPORTANTES
@@ -628,28 +628,28 @@ PC
 
 **VPN:**
 
-**10.8.0.0/24**
+**[REDE_VPN_FIXA]/24**
 
 
 **VPS:**
 
-**10.8.0.1**
+**[IP_VPN_VPS_FIXO]**
 
 
 **G806S:**
 
-**10.8.0.2**
+**[IP_VPN_G806S_FIXO]**
 
 
 **PC/TÉCNICO:**
 
 **Exemplo:**
-**10.8.0.3**
+**[IP_VPN_TECNICO_FIXO]**
 
 
 **REDE INDUSTRIAL:**
 
-**192.168.1.0/24**
+**[REDE_LAN_INDUSTRIAL_FIXA]/24**
 
 
 **SIEMENS S7:**
@@ -701,4 +701,3 @@ OK
 **CONFIGURADO**
 
 FIM
-

@@ -3,7 +3,7 @@ title: Instalação e configuração do servidor OpenVPN
 layout: default
 ---
 
-[← Início da documentação](/)
+[← Início da documentação]({{ site.baseurl }}/)
 
 # Instalação e configuração do servidor OpenVPN
 
@@ -118,9 +118,9 @@ yes
 **dh none**
 
 **topology subnet**
-**server 10.8.0.0 255.255.255.0**
+**server [REDE_VPN_FIXA] 255.255.255.0**
 
-push "route 192.168.1.0 255.255.255.0"
+push "route [REDE_LAN_INDUSTRIAL_FIXA] 255.255.255.0"
 
 **keepalive 10 120**
 
@@ -143,5 +143,4 @@ push "route 192.168.1.0 255.255.255.0"
 
 **NOTA:**
 **O client-config-dir é utilizado para as rotas específicas do**
-**cliente G806S.**
-
+**cliente G806S.**
