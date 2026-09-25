@@ -3,4 +3,5 @@ title: Documentação Smart Projetos
 description: Guias de VPN e acesso remoto a equipamentos industriais.
 exclude:
   - CONTEXTO_IA.md
-
+url: https://lucbragaa.github.io
+baseurl: /smartprojetos.github.io

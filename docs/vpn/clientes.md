@@ -3,7 +3,7 @@ title: Criação e configuração de clientes OpenVPN
 layout: default
 ---
 
-[← Início da documentação](/)
+[← Início da documentação]({{ site.baseurl }}/)
 
 # Criação e configuração de clientes OpenVPN
 
@@ -23,16 +23,16 @@ layout: default
 
 **Conteúdo:**
 
-**iroute 192.168.1.0 255.255.255.0**
+**iroute [REDE_LAN_INDUSTRIAL_FIXA] 255.255.255.0**
 
 
 **EXPLICAÇÃO:**
 
 O "push route" informa ao cliente VPN que a rede
-**192.168.1.0/24 existe através da VPN.**
+**[REDE_LAN_INDUSTRIAL_FIXA]/24 existe através da VPN.**
 
 O "iroute" informa ao servidor OpenVPN que a rede
-**192.168.1.0/24 está atrás especificamente do cliente g806s.**
+**[REDE_LAN_INDUSTRIAL_FIXA]/24 está atrás especificamente do cliente g806s.**
 
 
 ## 9. ATIVAR IP FORWARDING NO VPS
@@ -71,7 +71,7 @@ net.ipv4.ip_forward = 1
 
 **Regra:**
 
-    iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o enX0 -j MASQUERADE
+    iptables -t nat -A POSTROUTING -s [REDE_VPN_FIXA]/24 -o enX0 -j MASQUERADE
 
 
 **Verificar:**
@@ -82,7 +82,7 @@ net.ipv4.ip_forward = 1
 **Deve aparecer:**
 
 **MASQUERADE**
-**10.8.0.0/24**
+**[REDE_VPN_FIXA]/24**
 **0.0.0.0/0**
 
 
@@ -110,7 +110,7 @@ net.ipv4.ip_forward = 1
 
 **Deve existir a regra:**
 
-**-A POSTROUTING -s 10.8.0.0/24 -o enX0 -j MASQUERADE**
+**-A POSTROUTING -s [REDE_VPN_FIXA]/24 -o enX0 -j MASQUERADE**
 
 
 **IMPORTANTE:**
@@ -159,12 +159,12 @@ Sem isso, o NAT criado manualmente pode desaparecer após
 
 **A rede VPN deve aparecer aproximadamente como:**
 
-**10.8.0.0/24 dev tun0**
+**[REDE_VPN_FIXA]/24 dev tun0**
 
 
 **E o VPS:**
 
-**10.8.0.1**
+**[IP_VPN_VPS_FIXO]**
 
 
 ## 14. CRIAR UM NOVO CLIENTE OPENVPN
@@ -297,7 +297,7 @@ Save & Apply
 
 **IP VPN do G806S:**
 
-**10.8.0.2**
+**[IP_VPN_G806S_FIXO]**
 
 
 ## 18. ROTA NO G806S
@@ -307,7 +307,7 @@ Save & Apply
 **Para a rede industrial:**
 
 **Subnet:**
-**192.168.1.0**
+**[REDE_LAN_INDUSTRIAL_FIXA]**
 
 **Netmask:**
 **255.255.255.0**
@@ -341,6 +341,4 @@ Save & Apply
 **No nosso teste:**
 
 PC:
-**10.8.0.3**
-
-
+**[IP_VPN_TECNICO_FIXO]**

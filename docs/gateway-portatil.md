@@ -3,7 +3,7 @@ title: Gateway portátil Smart: implementação e testes
 layout: default
 ---
 
-[← Início da documentação](/)
+[← Início da documentação]({{ site.baseurl }}/)
 
 # Gateway portátil Smart: implementação e testes
 
@@ -30,30 +30,30 @@ Foi criada uma segunda VPN no mesmo VPS, separada da VPN utilizada pelos
 **GATEWAY FIXO**
 **Servidor OpenVPN:**
 **UDP 1194**
-**Rede VPN: 10.8.0.0/24**
+**Rede VPN: [REDE_VPN_FIXA]/24**
 
 **GATEWAY PORTÁTIL**
 **Servidor OpenVPN:**
 **UDP 1195**
-**Rede VPN: 10.9.0.0/24**
+**Rede VPN: [REDE_VPN_PORTATIL]/24**
 
 
 ## 3. ENDEREÇAMENTO DO TESTE
 
 **VPS - VPN PORTÁTIL**
-**10.9.0.1**
+**[IP_VPN_VPS_PORTATIL]**
 
 **G806S PORTÁTIL**
-**VPN: 10.9.0.2**
+**VPN: [IP_VPN_G806S_PORTATIL]**
 
 **PC SMART**
-**VPN: 10.9.0.10**
+**VPN: [IP_VPN_TECNICO_PORTATIL]**
 
 **LAN INDUSTRIAL DO TESTE**
-**G806S LAN: 192.168.0.254/24**
+**G806S LAN: [IP_LAN_G806S_PORTATIL]/24**
 
 **PLC:**
-**192.168.0.1/24**
+**[IP_PLC_PORTATIL]/24**
 
 **IMPORTANTE:**
 **O PLC estava configurado sem Gateway.**
@@ -73,7 +73,7 @@ O CLIENT_1 do G806S, utilizado para a VPN FIXA, foi desligado durante o teste.
 
 **O CLIENT_2 recebeu o endereço:**
 
-**10.9.0.2**
+**[IP_VPN_G806S_PORTATIL]**
 
 
 ## 5. CONFIGURAÇÃO DE FIREWALL / ZONAS
@@ -135,32 +135,32 @@ vpn
 lan
 
 **Internal IP:**
-**192.168.0.1**
+**[IP_PLC_PORTATIL]**
 
 **Internal port:**
 102
 
 **Fluxo:**
 
-**10.9.0.2:102**
+**[IP_VPN_G806S_PORTATIL]:102**
       ↓
 **DNAT**
       ↓
-**192.168.0.1:102**
+**[IP_PLC_PORTATIL]:102**
 
 
 ## 7. DESCOBERTA IMPORTANTE SOBRE O GATEWAY DOS EQUIPAMENTOS
 
 **Durante o teste foi utilizado inicialmente um PC industrial em:**
 
-**192.168.0.50**
+**[IP_EQUIPAMENTO_TESTE_PORTATIL]**
 
 Quando esse equipamento estava sem Gateway configurado, o Port Forward não
 **conseguia completar a comunicação.**
 
 **Ao configurar temporariamente:**
 
-Gateway = 192.168.0.254
+Gateway = [IP_LAN_G806S_PORTATIL]
 
 **o tráfego passou a funcionar.**
 
@@ -179,19 +179,19 @@ Para eliminar a necessidade de configurar Gateway nos equipamentos industriais,
 
 **Origem original:**
 
-**10.9.0.10**
+**[IP_VPN_TECNICO_PORTATIL]**
 
 **é traduzida pelo G806S para:**
 
-**192.168.0.254**
+**[IP_LAN_G806S_PORTATIL]**
 
 Assim, para o equipamento industrial, a comunicação passa a parecer:
 
 **Origem:**
-**192.168.0.254**
+**[IP_LAN_G806S_PORTATIL]**
 
 **Destino:**
-**192.168.0.1**
+**[IP_PLC_PORTATIL]**
 
 Como ambos pertencem à mesma LAN, o equipamento consegue responder
 **diretamente ao G806S.**
@@ -202,34 +202,34 @@ Como ambos pertencem à mesma LAN, o equipamento consegue responder
 ## 9. FLUXO COMPLETO
 
 **PC SMART**
-**10.9.0.10**
+**[IP_VPN_TECNICO_PORTATIL]**
     |
     | OpenVPN
     |
     v
 VPS
-**10.9.0.1**
+**[IP_VPN_VPS_PORTATIL]**
     |
     | VPN Portátil
     |
     v
 **G806S**
-VPN = 10.9.0.2
-LAN = 192.168.0.254
+VPN = [IP_VPN_G806S_PORTATIL]
+LAN = [IP_LAN_G806S_PORTATIL]
     |
     | DNAT
-    | 10.9.0.2:102
+    | [IP_VPN_G806S_PORTATIL]:102
     |        ↓
-    | 192.168.0.1:102
+    | [IP_PLC_PORTATIL]:102
     |
     | SNAT
     | origem VPN
     |        ↓
-    | 192.168.0.254
+    | [IP_LAN_G806S_PORTATIL]
     |
     v
 PLC
-**192.168.0.1**
+**[IP_PLC_PORTATIL]**
 **SEM GATEWAY**
 
 
@@ -239,21 +239,21 @@ PLC
 
 **PC Smart conseguiu acessar:**
 
-**10.9.0.2**
+**[IP_VPN_G806S_PORTATIL]**
 
 **Ping:**
 OK
 
 **A interface web do G806S foi acessada remotamente através de:**
 
-**http://10.9.0.2**
+**http://[IP_VPN_G806S_PORTATIL]**
 
 
 10.2 G806S → PLC
 
 **O próprio G806S conseguiu executar Ping para:**
 
-**192.168.0.1**
+**[IP_PLC_PORTATIL]**
 
 **Resultado:**
 0% de perda
@@ -263,7 +263,7 @@ OK
 
 Fisicamente conectado à LAN industrial, foi confirmado:
 
-**192.168.0.1:102**
+**[IP_PLC_PORTATIL]:102**
 
 **TCP:**
 OK
@@ -273,11 +273,11 @@ OK
 
 **Foi criado um teste com:**
 
-**10.9.0.2:1102**
+**[IP_VPN_G806S_PORTATIL]:1102**
         ↓
-**192.168.0.50:9000**
+**[IP_EQUIPAMENTO_TESTE_PORTATIL]:9000**
 
-Inicialmente, o equipamento 192.168.0.50 não conseguia responder corretamente
+Inicialmente, o equipamento [IP_EQUIPAMENTO_TESTE_PORTATIL] não conseguia responder corretamente
 **sem um caminho de retorno.**
 
 Após a utilização do Gateway/SNAT, a conexão passou a ser estabelecida.
@@ -334,15 +334,15 @@ onde muitos PLCs, IHMs, inversores e outros dispositivos já estão configurados
 
 **PAINEL A**
 **PLC:**
-**192.168.0.15**
+**[IP_PLC_PAINEL_A]**
 
 **PAINEL B**
 **PLC:**
-**192.168.10.15**
+**[IP_PLC_PAINEL_B]**
 
 **PAINEL C**
 **PLC:**
-**192.168.50.15**
+**[IP_PLC_PAINEL_C]**
 
 **A VPN Portátil continua utilizando a mesma estrutura.**
 
@@ -368,15 +368,15 @@ Para vários equipamentos, podem ser necessárias várias regras de DNAT.
 
 **Exemplo:**
 
-**10.9.0.2:102**
+**[IP_VPN_G806S_PORTATIL]:102**
         ↓
 **PLC:102**
 
-**10.9.0.4:102**
+**[IP_VPN_EQUIPAMENTO_PORTATIL_2]:102**
         ↓
 **IHM/PLC:102**
 
-**10.9.0.5:502**
+**[IP_VPN_EQUIPAMENTO_PORTATIL_3]:502**
         ↓
 **Equipamento Modbus:502**
 
@@ -446,5 +446,4 @@ PLC
 ## 5. Avaliar até onde o USR-G806S suporta a quantidade de regras necessária.
 
 ## 6. Comparar posteriormente com um Gateway Teltonika para a versão comercial
-**definitiva do Gateway Portátil Smart.**
-
+**definitiva do Gateway Portátil Smart.**
