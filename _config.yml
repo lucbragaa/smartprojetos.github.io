@@ -1,3 +1,6 @@
 theme: jekyll-theme-minimal
-title: Documentação Smart Projetos.
-description: Bookmark this to keep an eye on my project updates!
+title: Documentação Smart Projetos
+description: Guias de VPN e acesso remoto a equipamentos industriais.
+exclude:
+  - CONTEXTO_IA.md
+
